@@ -3,6 +3,18 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { createBooking, validatePromoCode } from '../services/api';
 import Loading from '../components/Loading';
 
+interface AxiosError {
+  response?: {
+    data?: {
+      message?: string;
+    };
+  };
+}
+
+function isAxiosError(error: unknown): error is AxiosError {
+  return typeof error === 'object' && error !== null && 'response' in error;
+}
+
 const Checkout: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -108,8 +120,8 @@ const Checkout: React.FC = () => {
         });
       }
     } catch (error: unknown) {
-      const errorMessage = error instanceof Error && 'response' in error 
-        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message || 'Booking failed. Please try again.'
+      const errorMessage = isAxiosError(error)
+        ? error.response?.data?.message || 'Booking failed. Please try again.'
         : 'Booking failed. Please try again.';
       navigate('/result', {
         state: {
