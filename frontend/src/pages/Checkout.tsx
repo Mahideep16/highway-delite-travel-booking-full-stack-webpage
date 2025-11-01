@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { createBooking, validatePromoCode } from '../services/api';
 import Loading from '../components/Loading';
 
@@ -107,11 +108,14 @@ const Checkout: React.FC = () => {
           },
         });
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = axios.isAxiosError(error) && error.response?.data?.message
+        ? error.response.data.message
+        : 'Booking failed. Please try again.';
       navigate('/result', {
         state: {
           success: false,
-          message: error.response?.data?.message || 'Booking failed. Please try again.',
+          message: errorMessage,
         },
       });
     } finally {

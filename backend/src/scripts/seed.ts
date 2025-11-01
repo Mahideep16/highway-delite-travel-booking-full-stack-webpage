@@ -70,7 +70,14 @@ const seedData = async () => {
     console.log(`Created ${experiences.length} experiences`);
 
     // Create slots for each experience
-    const slots: any[] = [];
+    interface SlotData {
+      experienceId: string;
+      date: Date;
+      time: string;
+      availableSpots: number;
+      totalSpots: number;
+    }
+    const slots: SlotData[] = [];
     const dates = ['2025-10-22', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26'];
     const times = [
       { time: '07:00 am', slots: 4 },
@@ -84,7 +91,7 @@ const seedData = async () => {
         for (const timeSlot of times) {
           slots.push({
             experienceId: experience.id,
-            date: date,
+            date: new Date(date),
             time: timeSlot.time,
             availableSpots: timeSlot.slots,
             totalSpots: 10,
@@ -93,7 +100,7 @@ const seedData = async () => {
       }
     }
 
-    await Slot.bulkCreate(slots as any);
+    await Slot.bulkCreate(slots);
     console.log(`Created ${slots.length} slots`);
 
     console.log('Seed data created successfully');
