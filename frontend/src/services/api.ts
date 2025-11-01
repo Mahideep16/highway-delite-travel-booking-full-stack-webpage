@@ -21,6 +21,24 @@ export interface Experience {
   price: number;
 }
 
+interface RawExperience {
+  id: string | number;
+  name: string;
+  location: string;
+  description: string;
+  image: string;
+  price: number;
+  slots?: RawSlot[];
+}
+
+interface RawSlot {
+  id: string | number;
+  date: string;
+  time: string;
+  availableSpots: number;
+  totalSpots: number;
+}
+
 export interface Slot {
   id: string;
   experienceId: string;
@@ -82,9 +100,9 @@ export const getExperiences = async (): Promise<Experience[]> => {
   }
 
   const res = await fetch('/data/experiences.json', { cache: 'no-store' });
-  const json = await res.json();
+  const json = await res.json() as { experiences?: RawExperience[] };
   // file shape: { experiences: Array<{... , slots: Slot[]}> }
-  return (json.experiences || []).map((e: any) => ({
+  return (json.experiences || []).map((e: RawExperience) => ({
     id: String(e.id),
     name: e.name,
     location: e.location,
@@ -105,12 +123,12 @@ export const getExperienceById = async (id: string): Promise<ExperienceDetail> =
   }
 
   const res = await fetch('/data/experiences.json', { cache: 'no-store' });
-  const json = await res.json();
-  const found = (json.experiences || []).find((e: any) => String(e.id) === String(id));
+  const json = await res.json() as { experiences?: RawExperience[] };
+  const found = (json.experiences || []).find((e: RawExperience) => String(e.id) === String(id));
   if (!found) throw new Error('Experience not found in static data');
   // If no slots provided in static file, generate a simple 5-day schedule
-  const ensureSlots = () => {
-    const out: any[] = [];
+  const ensureSlots = (): RawSlot[] => {
+    const out: RawSlot[] = [];
     if (found.slots && found.slots.length > 0) return found.slots;
     const times = [
       { time: '07:00 am', slots: 4 },
@@ -141,7 +159,7 @@ export const getExperienceById = async (id: string): Promise<ExperienceDetail> =
     description: found.description,
     image: found.image,
     price: found.price,
-    slots: ensureSlots().map((s: any) => ({
+    slots: ensureSlots().map((s: RawSlot) => ({
       id: String(s.id),
       experienceId: String(found.id),
       date: s.date,
@@ -192,7 +210,7 @@ export const validatePromoCode = async (
     try {
       const response = await api.post('/promo/validate', { code, subtotal });
       return response.data as PromoValidation;
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.warn('API validatePromoCode failed, using static validation:', error);
     }
   }

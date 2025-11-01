@@ -107,11 +107,14 @@ const Checkout: React.FC = () => {
           },
         });
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error && 'response' in error 
+        ? (error as { response?: { data?: { message?: string } } }).response?.data?.message || 'Booking failed. Please try again.'
+        : 'Booking failed. Please try again.';
       navigate('/result', {
         state: {
           success: false,
-          message: error.response?.data?.message || 'Booking failed. Please try again.',
+          message: errorMessage,
         },
       });
     } finally {

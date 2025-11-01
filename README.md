@@ -1,6 +1,6 @@
 # Highway Delite - Travel Experience Booking Platform
 
-A complete fullstack web application for exploring and booking travel experiences. Built with React, TypeScript, TailwindCSS on the frontend and Node.js, Express, PostgreSQL on the backend.
+A complete fullstack web application for exploring and booking travel experiences. Built with React, TypeScript, TailwindCSS on the frontend and Node.js, Express, MySQL on the backend.
 
 ## 🌟 Features
 
@@ -25,7 +25,7 @@ A complete fullstack web application for exploring and booking travel experience
 ### Backend
 - **Node.js** with Express
 - **TypeScript** for type safety
-- **PostgreSQL** database
+- **MySQL** database
 - **Sequelize** ORM
 - **Joi** for validation
 
@@ -34,7 +34,7 @@ A complete fullstack web application for exploring and booking travel experience
 Before running this application, ensure you have:
 
 - **Node.js** (v18 or higher)
-- **PostgreSQL** (v14 or higher)
+- **MySQL** (v5.7 or higher) or **XAMPP**
 - **npm** or **yarn**
 
 ## 🚀 Getting Started
@@ -47,19 +47,21 @@ cd "C:\Users\PC\OneDrive\Desktop\New folder (2)\highway-delite"
 
 ### 2. Database Setup
 
-Create a PostgreSQL database:
+Create a MySQL database:
 
 ```sql
 CREATE DATABASE highway_delite;
 ```
 
-Or use psql command line:
+Or use MySQL command line:
 
 ```bash
-psql -U postgres
+mysql -u root -p
 CREATE DATABASE highway_delite;
-\q
+exit;
 ```
+
+See [MYSQL_SETUP.md](MYSQL_SETUP.md) for detailed MySQL installation and setup instructions.
 
 ### 3. Backend Setup
 
@@ -83,10 +85,10 @@ PORT=5000
 NODE_ENV=development
 
 DB_HOST=localhost
-DB_PORT=5432
+DB_PORT=3306
 DB_NAME=highway_delite
-DB_USER=postgres
-DB_PASSWORD=your_postgres_password
+DB_USER=root
+DB_PASSWORD=your_mysql_password
 
 CORS_ORIGIN=http://localhost:5173
 ```
@@ -373,8 +375,9 @@ highway-delite/
 
 **Database Connection Error:**
 ```
-Check PostgreSQL is running:
-Windows: Check Services (services.msc) for "postgresql" service
+Check MySQL is running:
+Windows: Check Services (services.msc) for "MySQL" or "MySQL80" service
+XAMPP: Start MySQL from XAMPP Control Panel
 Verify database credentials in .env file
 ```
 
@@ -422,7 +425,7 @@ npm run preview  # Preview production build
 ### Backend Deployment (Example with Heroku/Railway)
 
 1. Set environment variables
-2. Configure PostgreSQL database
+2. Configure MySQL database
 3. Run migrations and seed
 4. Deploy backend
 
@@ -455,4 +458,4 @@ For questions or issues, please create an issue in the repository.
 
 ---
 
-**Built with ❤️ using React, TypeScript, Node.js, and PostgreSQL**
+**Built with ❤️ using React, TypeScript, Node.js, and MySQL**
