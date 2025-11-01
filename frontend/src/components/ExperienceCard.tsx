@@ -14,11 +14,11 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
       <div className="relative h-48 overflow-hidden">
         <ImageWithFallback
           sources={[
+            `/images/${slugify(experience.name)}-${slugify(experience.location)}.jpg`,
+            `/images/${slugify(experience.name)}.jpg`,
+            `/images/${slugify(experience.name)}.png`,
             `${API_ORIGIN}/images/${slugify(experience.name)}-${slugify(experience.location)}.jpg`,
-            `${API_ORIGIN}/images/${slugify(experience.name)}-${slugify(experience.location)}.jpeg`,
             `${API_ORIGIN}/images/${slugify(experience.name)}.jpg`,
-            `${API_ORIGIN}/images/${slugify(experience.name)}.jpeg`,
-            `${API_ORIGIN}/images/${slugify(experience.name)}.png`,
             experience.image,
           ]}
           alt={experience.name}

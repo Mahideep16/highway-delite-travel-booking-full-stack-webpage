@@ -115,11 +115,11 @@ const Header = () => {
                       >
                         <ImageWithFallback
                           sources={[
+                            `/images/${slugify(exp.name)}-${slugify(exp.location)}.jpg`,
+                            `/images/${slugify(exp.name)}.jpg`,
+                            `/images/${slugify(exp.name)}.png`,
                             `${API_ORIGIN}/images/${slugify(exp.name)}-${slugify(exp.location)}.jpg`,
-                            `${API_ORIGIN}/images/${slugify(exp.name)}-${slugify(exp.location)}.jpeg`,
                             `${API_ORIGIN}/images/${slugify(exp.name)}.jpg`,
-                            `${API_ORIGIN}/images/${slugify(exp.name)}.jpeg`,
-                            `${API_ORIGIN}/images/${slugify(exp.name)}.png`,
                             exp.image,
                           ]}
                           alt={exp.name}

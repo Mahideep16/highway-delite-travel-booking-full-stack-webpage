@@ -1,0 +1,76 @@
+{
+  "experiences": [
+    {
+      "id": "1",
+      "name": "Kayaking",
+      "location": "Udupi",
+      "description": "Curated small-group experience. Certified guide. Safety first with gear included. Helmet and Life jackets along with an expert will accompany in kayaking.",
+      "image": "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800",
+      "price": 999,
+      "slots": []
+    },
+    {
+      "id": "2",
+      "name": "Kayaking",
+      "location": "Udupi, Karnataka",
+      "description": "Curated small-group experience. Certified guide. Safety first with gear included.",
+      "image": "https://images.unsplash.com/photo-1503481766315-7a586b20f66d?w=800",
+      "price": 999,
+      "slots": []
+    },
+    {
+      "id": "3",
+      "name": "Kayaking",
+      "location": "Udupi, Karnataka",
+      "description": "Curated small-group experience. Certified guide. Safety first with gear included.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+      "price": 999,
+      "slots": []
+    },
+    {
+      "id": "4",
+      "name": "Nandi Hills Sunrise",
+      "location": "Bangalore",
+      "description": "Curated small-group experience. Certified guide. Safety first with gear included.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+      "price": 899,
+      "slots": []
+    },
+    {
+      "id": "5",
+      "name": "Coffee Trail",
+      "location": "Coorg",
+      "description": "Curated small-group experience. Certified guide. Safety first with gear included.",
+      "image": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800",
+      "price": 1299,
+      "slots": []
+    },
+    {
+      "id": "6",
+      "name": "Nandi Hills Sunrise",
+      "location": "Bangalore",
+      "description": "Curated small-group experience. Certified guide. Safety first with gear included.",
+      "image": "https://images.unsplash.com/photo-1495556650867-99590cea3657?w=800",
+      "price": 899,
+      "slots": []
+    },
+    {
+      "id": "7",
+      "name": "Boat Cruise",
+      "location": "Sundarban",
+      "description": "Curated small-group experience. Certified guide. Safety first with gear included.",
+      "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+      "price": 999,
+      "slots": []
+    },
+    {
+      "id": "8",
+      "name": "Bunjee Jumping",
+      "location": "Manali",
+      "description": "Curated small-group experience. Certified guide. Safety first with gear included.",
+      "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800",
+      "price": 999,
+      "slots": []
+    }
+  ]
+}
